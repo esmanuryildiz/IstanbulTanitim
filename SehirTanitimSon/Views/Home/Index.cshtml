@@ -1,0 +1,60 @@
+﻿@model List<SehirTanitimSon.Models.Slider>
+
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <div id="sliderCarousel" class="carousel slide mb-5" data-bs-ride="carousel" style="max-width: 900px; margin: auto;">
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+                    <img src="@item.ImageUrl" class="d-block w-100 rounded shadow" style="height: 400px; object-fit: cover;" alt="@item.Title" />
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                        <h5>@item.Title</h5>
+                        <p>@item.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#sliderCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Önceki</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#sliderCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sonraki</span>
+        </button>
+    </div>
+}
+else
+{
+    <p>Henüz slider verisi eklenmemiş.</p>
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 bg-light">
+        <div class="card-body px-4 py-4">
+            <h3 class="card-title text-center text-primary mb-4" style="font-family: 'Segoe UI', sans-serif;">İstanbul Hakkında</h3>
+            <p class="card-text" style="font-size: 1rem; line-height: 1.7; font-family: 'Segoe UI', sans-serif; text-align: justify;">
+                İstanbul, Türkiye'nin en büyük şehri olmasının ötesinde, tarihi, kültürel ve coğrafi zenginlikleriyle dünyanın en dikkat çeken metropollerinden biridir. Asya ve Avrupa kıtalarını birleştiren eşsiz konumu sayesinde, tarih boyunca stratejik bir geçiş noktası olmuş; Roma, Bizans ve Osmanlı İmparatorlukları gibi büyük uygarlıklara başkentlik yapmıştır.
+            </p>
+            <p class="card-text" style="font-size: 1rem; line-height: 1.7; font-family: 'Segoe UI', sans-serif; text-align: justify;">
+                Şehir, geçmişten günümüze uzanan çok katmanlı yapısıyla sadece Türkiye'nin değil, tüm dünyanın ilgisini çekmektedir. Ayasofya, Topkapı Sarayı, Sultanahmet Camii, Yerebatan Sarnıcı, Galata Kulesi gibi tarihi yapılar, İstanbul'un zengin kültürel mirasını temsil eder. Bu eserler, şehrin sokaklarında adım başı hissedilen tarihî atmosferin sadece birkaç örneğidir.
+            </p>
+            <p class="card-text" style="font-size: 1rem; line-height: 1.7; font-family: 'Segoe UI', sans-serif; text-align: justify;">
+                Boğaziçi, hem İstanbul'un sembollerinden biri hem de doğal güzellik anlamında büyük bir cazibe merkezidir. Kıyısında uzanan yalılar, köprüler ve sahil yolları hem yaşayanlara hem de ziyaretçilere eşsiz manzaralar sunar. İstanbul’un çeşitli semtleri; Üsküdar, Beşiktaş, Kadıköy, Eminönü, Balat ve Karaköy gibi bölgeleri, kendine has dokularıyla şehrin çeşitliliğini yansıtır.
+            </p>
+            <p class="card-text" style="font-size: 1rem; line-height: 1.7; font-family: 'Segoe UI', sans-serif; text-align: justify;">
+                Sosyal yaşam açısından da oldukça hareketli olan İstanbul; tiyatro, konser, sinema, sergi, festival ve fuar gibi birçok kültürel etkinliğe ev sahipliği yapar. Kapalıçarşı, Mısır Çarşısı, İstiklal Caddesi gibi merkezler alışveriş ve yaşam kültürünü şekillendirirken; sahil yürüyüşleri, vapur seferleri ve çay bahçeleri, şehir hayatına huzurlu molalar ekler.
+            </p>
+            <p class="card-text" style="font-size: 1rem; line-height: 1.7; font-family: 'Segoe UI', sans-serif; text-align: justify;">
+                Sonuç olarak İstanbul, yalnızca bir şehir değil, bir tarih, bir kültür, bir yaşam biçimidir. Her adımında farklı bir hikâye, her köşesinde farklı bir medeniyet izine rastlamak mümkündür. İstanbul’u gezmek bir yolculuk değil; zamanlar arası bir keşif deneyimidir.
+            </p>
+        </div>
+    </div>
+</div>

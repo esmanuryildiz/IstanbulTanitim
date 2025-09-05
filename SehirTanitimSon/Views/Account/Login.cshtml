@@ -1,0 +1,56 @@
+﻿@using SehirTanitimSon.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header" style="background-color: #343a40;">
+                <h4 class="mb-0 text-white">Giriş Yap</h4>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Email, "E-posta", new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-posta adresinizi girin" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Password, "Şifre", new { @class = "form-label" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Şifrenizi girin" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-check mb-3">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
+                        @Html.LabelFor(m => m.RememberMe, "Beni hatırla", new { @class = "form-check-label" })
+                    </div>
+
+                    <button type="submit" class="btn w-100 text-white" style="background-color: #5fa8d3;">Giriş Yap</button>
+                }
+
+                <hr />
+
+                <div class="text-center">
+                    <p>
+                        Hesabınız yok mu?
+                        @Html.ActionLink("Kayıt Ol", "Register", "Account", null, new { @class = "btn btn-link" })
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

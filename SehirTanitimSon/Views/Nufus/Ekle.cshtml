@@ -1,0 +1,18 @@
+﻿@model SehirTanitimSon.Models.Nufus
+@{
+    ViewBag.Title = "Nüfus Ekle";
+}
+
+<h2>Yeni Nüfus Verisi Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Yil)
+    @Html.TextBoxFor(m => m.Yil, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Sayi)
+    @Html.TextBoxFor(m => m.Sayi, new { @class = "form-control" })
+
+    <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+}

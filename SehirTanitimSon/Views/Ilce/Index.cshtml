@@ -1,0 +1,42 @@
+﻿@model List<SehirTanitimSon.Models.Ilce>
+@{
+    ViewBag.Title = "İlçeler";
+}
+
+<h2>İlçeler</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Yeni İlçe Ekle", "Ekle", "Ilce", null, new { @class = "btn btn-success" })
+    </p>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr style="background-color: #e8f1ff;">
+            <th>Ad</th>
+            <th>Açıklama</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>İşlemler</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ilce in Model)
+        {
+            <tr>
+                <td>@ilce.Ad</td>
+                <td>@ilce.Aciklama</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Düzenle", "Duzenle", new { id = ilce.Id }) |
+                        @Html.ActionLink("Sil", "Sil", new { id = ilce.Id }, new { onclick = "return confirm('Emin misiniz?');" })
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model List<SehirTanitimSon.Models.Nufus>
+@{
+    ViewBag.Title = "Nüfus Bilgisi";
+}
+
+<h2>Son 3 Yılın Nüfusu</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Yeni Ekle", "Ekle", "Nufus", null, new { @class = "btn btn-success" })
+    </p>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Yıl</th>
+            <th>Nüfus</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>İşlemler</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Yil</td>
+                <td>@item.Sayi</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Düzenle", "Duzenle", new { id = item.Id }) |
+                        @Html.ActionLink("Sil", "Sil", new { id = item.Id }, new { onclick = "return confirm('Emin misiniz?');" })
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

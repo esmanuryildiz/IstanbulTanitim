@@ -1,0 +1,35 @@
+﻿@model SehirTanitimSon.Models.TuristikYer
+
+@{
+    ViewBag.Title = "Turistik Yeri Düzenle";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.LabelFor(m => m.Ad)
+    @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Ad)
+
+    <br />
+
+    @Html.LabelFor(m => m.Aciklama)
+    @Html.TextAreaFor(m => m.Aciklama, new { @class = "form-control", rows = 3 })
+    @Html.ValidationMessageFor(m => m.Aciklama)
+
+    <br />
+
+    @Html.LabelFor(m => m.ResimUrl)
+    @Html.TextBoxFor(m => m.ResimUrl, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ResimUrl)
+
+    <br />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
